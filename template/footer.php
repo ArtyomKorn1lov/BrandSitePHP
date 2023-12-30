@@ -1,4 +1,5 @@
 <?php use lib\SiteHelper; ?>
+</div>
 <footer>
     <div id="footerInside">
 
@@ -18,8 +19,8 @@
         </div>
 
         <div id="footerNav">
-            <a href="#">Главная</a>
-            <a href="#">Магазин</a>
+            <a href="<?=SiteHelper::getFullUrl(false);?>">Главная</a>
+            <a href="<?=SiteHelper::getFullUrl(false);?>/catalog">Магазин</a>
         </div>
 
         <div id="social">

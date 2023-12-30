@@ -13,15 +13,18 @@ use lib\SiteHelper;
 <body>
 <header>
     <div id="headerInside">
-        <div id="logo"></div>
-        <div id="companyName">Brand</div>
+        <a href="<?=SiteHelper::getFullUrl(false);?>">
+            <div id="logo"></div>
+            <div id="companyName">Brand</div>
+        </a>
         <div id="navWrap">
-            <a href="#">
+            <a href="<?=SiteHelper::getFullUrl(false);?>">
                 Главная
             </a>
-            <a href="#">
+            <a href="<?=SiteHelper::getFullUrl(false);?>/catalog">
                 Магазин
             </a>
         </div>
     </div>
 </header>
+<div id="content">

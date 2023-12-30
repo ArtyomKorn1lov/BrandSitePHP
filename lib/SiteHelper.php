@@ -20,4 +20,13 @@ class SiteHelper
         $full_url .= $_SERVER["SERVER_NAME"];
         return $isRequestURI ? $full_url.$_SERVER["REQUEST_URI"] : $full_url;
     }
+
+    public static function includeArea(string $filePath): bool {
+        if (!file_exists($_SERVER["DOCUMENT_ROOT"] . $filePath)) {
+            echo "The file $filePath does not exist";
+            return false;
+        }
+        include $_SERVER["DOCUMENT_ROOT"] . $filePath;
+        return true;
+    }
 }
