@@ -4,7 +4,7 @@ use lib\SiteHelper;
 ?>
     <div id="promo">
         <h1 id="promoText">
-            Купите телефон по самой выгодной цене!
+            Интернет магазин для продажи телефонов
         </h1>
     </div>
 
@@ -13,4 +13,7 @@ use lib\SiteHelper;
             <?php SiteHelper::includeArea("/include/main/main-text.php") ?>
         </div>
     </div>
+    <script>
+        document.title = "Главная";
+    </script>
 <?php require($_SERVER["DOCUMENT_ROOT"]."/template/footer.php"); ?>

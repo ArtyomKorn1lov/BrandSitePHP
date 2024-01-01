@@ -11,4 +11,6 @@ class Constants
     public const PROTOCOLE_HTTP = "http://";
     /** @var string https протокол */
     public const PROTOCOLE_HTTPS = "http://";
+    /** @var string таблица с каталогом товаров */
+    public const PRODUCT_TABLE_NAME = "catalog";
 }

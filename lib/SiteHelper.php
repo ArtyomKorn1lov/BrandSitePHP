@@ -12,16 +12,23 @@ class SiteHelper
      * @param bool $isRequestURI
      * @return string
      */
-    public static function getFullUrl(bool $isRequestURI): string {
-        $full_url = "http://";
+    public static function getFullUrl(bool $isRequestURI): string
+    {
+        $full_url = Constants::PROTOCOLE_HTTP;
         if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] === "on") {
-            $full_url = "https://";
+            $full_url = Constants::PROTOCOLE_HTTPS;
         }
         $full_url .= $_SERVER["SERVER_NAME"];
-        return $isRequestURI ? $full_url.$_SERVER["REQUEST_URI"] : $full_url;
+        return $isRequestURI ? $full_url . $_SERVER["REQUEST_URI"] : $full_url;
     }
 
-    public static function includeArea(string $filePath): bool {
+    /**
+     * Подключить файл с включаемой областью
+     * @param string $filePath
+     * @return bool
+     */
+    public static function includeArea(string $filePath): bool
+    {
         if (!file_exists($_SERVER["DOCUMENT_ROOT"] . $filePath)) {
             echo "The file $filePath does not exist";
             return false;
