@@ -62,4 +62,48 @@ class ProductsRepository
         }
         return $products;
     }
+
+    /**
+     * Получить товар по Id
+     * @param int $id
+     * @return ProductListModel|bool
+     */
+    public function getById(int $id): ProductListModel|bool
+    {
+        if (empty($id)) {
+            return false;
+        }
+        $sql = "SELECT * FROM `" . Constants::PRODUCT_TABLE_NAME . "` WHERE ID = " . $id;
+        $result = mysqli_query($this->conn, $sql);
+        if (!$result) {
+            die("Ошибка: " . mysqli_error($this->conn));
+            return false;
+        }
+        $rowCount = mysqli_num_rows($result);
+        if ($rowCount <= 0) {
+            return false;
+        }
+        $item = $result->fetch_array();
+        if (!$item) {
+            return false;
+        }
+        $name = false;
+        if (isset($item["NAME"]) && !empty($item["NAME"])) {
+            $name = $item["NAME"];
+        }
+        $price = false;
+        if (isset($item["PRICE"]) && !empty($item["PRICE"])) {
+            $price = $item["PRICE"];
+        }
+        $text = false;
+        if (isset($item["TEXT"]) && !empty($item["TEXT"])) {
+            $text = $item["TEXT"];
+        }
+        $picture = false;
+        if (isset($item["PICTURE"]) && !empty($item["PICTURE"])) {
+            $picture = $item["PICTURE"];
+        }
+        $product = new ProductListModel($item["ID"], $name, $price, $text, $picture, $item["PRODUCT_DAY"]);
+        return $product;
+    }
 }

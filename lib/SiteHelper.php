@@ -36,4 +36,21 @@ class SiteHelper
         include $_SERVER["DOCUMENT_ROOT"] . $filePath;
         return true;
     }
+
+    /**
+     * Обрезать текст
+     * @param string $text
+     * @param int $chars
+     * @return string
+     */
+    public static function truncateString(string $text, int $chars = 50): string
+    {
+        if (strlen($text) <= $chars) {
+            return $text;
+        }
+        $text = $text." ";
+        $text = substr($text,0,$chars);
+        $text = substr($text,0,strrpos($text,' '));
+        return $text."...";
+    }
 }
